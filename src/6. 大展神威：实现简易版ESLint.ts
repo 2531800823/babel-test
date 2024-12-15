@@ -41,6 +41,11 @@ const MyPlugin = ({ fix }: { fix: boolean }): core.PluginItem => {
               t.isIdentifier(node.callee.property) &&
               node.callee.property.name === "log"
             ) {
+              // 如果是 修复就直接删除
+              if (fix) {
+                path.parentPath.remove();
+                return;
+              }
               errors.push(
                 path.buildCodeFrameError(`代码中不能出现console语句`, Error) //抛出一个语法错误
               );
@@ -53,7 +58,7 @@ const MyPlugin = ({ fix }: { fix: boolean }): core.PluginItem => {
 };
 
 let targetSource = core.transform(code, {
-  plugins: [MyPlugin], //使用插件
+  plugins: [MyPlugin({ fix: true })], //使用插件
 });
 
 console.log("🚀 liu123 ~ newCode:", targetSource.code);
