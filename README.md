@@ -10,3 +10,4 @@ https://juejin.cn/post/7155151377013047304#heading-17
 3. 崭露头角：手写复杂版 babel-plugin-transform-es2015-arrow-functions
 4. 初战告捷：手写一个 console.log 插件
 5. 大展身手：手写监控系统中的日志上传插件
+6. 大展神威：实现简易版 ESLint
